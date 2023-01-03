@@ -82,7 +82,7 @@ def fit_model(request: FitIn):
         model=build_model(ticker=request.ticker, use_new_data=request.use_new_data)
 
         # Wrangle data
-        model.wrangle_data(n_observation=request.n_observations)
+        model.wrangle_data(n_observations=request.n_observations)
 
         # Fit model
         model.fit(p=request.p, q=request.q)
@@ -109,8 +109,8 @@ def fit_model(request: FitIn):
 
 
 # Task 8.4.19 `"/predict" path, 200 status code
-@app.post("/predict", status_code=200, response_model=PredictOut
-def get_prediction():
+@app.post("/predict", status_code=200, response_model=PredictOut)
+def get_prediction(request: PredictIn):
 
     # Create `response` dictionary from `request`
     response=request.dict()
